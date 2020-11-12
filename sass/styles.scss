@@ -1,0 +1,20 @@
+@use 'options.scss';
+@use 'rightLayout.scss';
+
+.page{
+    display: flex;
+    flex-direction: row;
+    height: 720px;
+}
+
+.leftSide{
+    width: 65%;
+    height: 100%;
+    // background-color: red;
+}
+
+.rightSide{
+    width: 35%;
+    height: 100%;
+    background-color: green;
+}
