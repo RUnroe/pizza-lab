@@ -60,6 +60,8 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0.5em;
+  border: 1px solid #000;
 }
 .config-row p {
   text-transform: capitalize;
@@ -67,8 +69,17 @@
 .config-row .config-radio-container {
   display: flex;
 }
-.config-row .config-radio-container .radio-group {
+.config-row .config-radio-container .config-radio-group {
   display: flex;
+  padding: 0 0.4em;
+}
+.config-row .config-radio-container .config-radio-group .config-radio-div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.3em;
+}
+.config-row .config-radio-container .config-radio-group .config-radio-div input {
+  margin: auto;
 }
 
 /*# sourceMappingURL=styles.css.map */

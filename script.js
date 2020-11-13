@@ -67,6 +67,7 @@ const createLayout = () => {
     total.innerHTML = "Total: $0";
     //make order button
     let orderBtn = document.createElement("button");
+    orderBtn.innerHTML = "Order";
     orderBtn.classList.add("orderButton");
 
     //Nest all elements
@@ -110,10 +111,10 @@ const createPizzaConfigMenu = () => {
     let radioBtnContainer = document.createElement("div");
     radioBtnContainer.classList.add("config-radio-container");
     let radioGroup = document.createElement("div");
-    radioGroup.classList.add("radio-group");
+    radioGroup.classList.add("config-radio-group");
     radioGroup.appendChild(createRadioDiv("sm", "size"));
     radioGroup.appendChild(createRadioDiv("md", "size"));
-    radioGroup.appendChild(createRadioDiv("lg", "size"));
+    radioGroup.appendChild(createRadioDiv("lg", "size", true));
     radioGroup.appendChild(createRadioDiv("xl", "size"));
     radioBtnContainer.appendChild(radioGroup);
     size.appendChild(radioBtnContainer);
@@ -136,20 +137,22 @@ const createConfigToppingRow = (index, topping) => {
     rowTitle.innerHTML = topping.name;
     toppingRow.appendChild(rowTitle);
 
+    //Made radio button group for quantity of topping
     let radioBtnContainer = document.createElement("div");
     radioBtnContainer.classList.add("config-radio-container");
     let radioGroup = document.createElement("div");
-    radioGroup.classList.add("radio-group");
-    radioGroup.appendChild(createRadioDiv("Left", ("position" + index)));
-    radioGroup.appendChild(createRadioDiv("All", ("position" + index)));
-    radioGroup.appendChild(createRadioDiv("Right", ("position" + index)));
-    radioBtnContainer.appendChild(radioGroup);
-    
-    radioGroup = document.createElement("div");
-    radioGroup.classList.add("radio-group");
+    radioGroup.classList.add("config-radio-group");
     radioGroup.appendChild(createRadioDiv("Reg", ("amount" + index)));
     radioGroup.appendChild(createRadioDiv("Dbl", ("amount" + index)));
     radioGroup.appendChild(createRadioDiv("None", ("amount" + index)));
+    radioBtnContainer.appendChild(radioGroup);
+    
+    //Made radio button group for position of topping
+    radioGroup = document.createElement("div");
+    radioGroup.classList.add("config-radio-group");
+    radioGroup.appendChild(createRadioDiv("Left", ("position" + index)));
+    radioGroup.appendChild(createRadioDiv("All", ("position" + index)));
+    radioGroup.appendChild(createRadioDiv("Right", ("position" + index)));
     radioBtnContainer.appendChild(radioGroup);
     toppingRow.appendChild(radioBtnContainer);
     return toppingRow;
@@ -157,7 +160,7 @@ const createConfigToppingRow = (index, topping) => {
 
 
 
-const createRadioDiv = (labelName, groupName) => {
+const createRadioDiv = (labelName, groupName, isChecked) => {
     let radioDiv = document.createElement("div");
     radioDiv.classList.add("config-radio-div");
     //make label. set label for  and label text equal to the name of the label 
@@ -170,7 +173,10 @@ const createRadioDiv = (labelName, groupName) => {
     radioBtn.id = labelName;
     radioBtn.setAttribute("name", groupName);
     radioBtn.setAttribute("value", labelName);
-    //Appen label and btn to container
+
+    //Set default checked
+    if(isChecked) radioBtn.checked = true;
+    //Append label and btn to container
     radioDiv.appendChild(label);
     radioDiv.appendChild(radioBtn);
     //Return container div

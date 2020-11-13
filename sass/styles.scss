@@ -23,14 +23,24 @@
     width:100%;
     display: flex;
     justify-content: space-between;
+    padding:0.5em;
+    border: 1px solid #000;
     p {
         text-transform: capitalize;
     }
     .config-radio-container {
         display:flex;
-
-        .radio-group {
+        .config-radio-group {
             display:flex;
+            padding: 0 0.4em;
+            .config-radio-div {
+                display:flex;
+                flex-direction: column;
+                padding:0 0.3em;
+                input {
+                    margin:auto;
+                }
+            }
         }
     }
 }
