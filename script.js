@@ -239,11 +239,29 @@ const populateDataIntoConfigMenu = pizzaObject => {
     //Set title
     document.getElementsByClassName("config-header")[0].firstChild.innerHTML = pizzaObject.name;
     //Check correct radio btns based on pizza passed in
+    resetConfigMenu();
     for(topping of pizzaObject.toppings) {
         let configRow = document.querySelector(`[data-topping='${topping.name}']`);
         configRow.querySelector(`[data-name='amount-${topping.quantity}']`).lastChild.checked = true;
         configRow.querySelector(`[data-name='position-${topping.position}']`).lastChild.checked = true;
         enableRadioButtons(configRow.lastChild.lastChild.children);
+    }
+}
+
+const resetConfigMenu = () => {
+    //Reset size to large
+
+    //Reset toppings to quantity: none and position: all
+    for(let i = 1; i < document.getElementsByClassName("config-row").length; i++) {
+        let toppingRow = document.getElementsByClassName("config-row")[i];
+        //Set to quantity none
+        toppingRow.lastChild.firstChild.children[0].lastChild.checked = true;
+        //set to position all
+        toppingRow.lastChild.lastChild.children[1].lastChild.checked = true;
+        //Disable position btns
+        for(radioDiv of toppingRow.lastChild.lastChild.children) {
+            radioDiv.lastChild.disabled = true;
+        }
     }
 }
 
@@ -277,6 +295,7 @@ const hideConfigMenu = () => {
     //Clear pizza output box and price
     document.getElementsByClassName("order")[0].innerHTML = "";
     document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
+
 
 }
 
