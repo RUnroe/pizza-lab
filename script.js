@@ -21,5 +21,49 @@ const calculatePrice = pizzaObject => {
 //         {name: "olives", position: "all", quantity:"double"} 
 //     ]
 // }
-
 // console.log(calculatePrice(objectName));
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    let parentContainer = document.getElementById("pizza");
+    
+    let leftSide = document.createElement("div");
+    leftSide.classList.add("leftSide");
+    
+    for(prebuiltPizza of pizzaData.prebuilt) {
+        leftSide.appendChild(createOptionBtn(prebuiltPizza.name));
+    }
+    leftSide.appendChild(createOptionBtn("Custom Pizza"));
+    parentContainer.appendChild(leftSide);
+
+    let rightSide = document.createElement("div");
+    rightSide.classList.add("rightSide");
+    
+    let pizzaDisplay = document.createElement("div");
+    pizzaDisplay.classList.add("pizza");
+    let order = document.createElement("div");
+    order.classList.add("order");
+    let total = document.createElement("div");
+    total.classList.add("total");
+    total.innerHTML = "Total: $0";
+    let orderBtn = document.createElement("button");
+    orderBtn.classList.add("orderButton");
+
+    rightSide.appendChild(pizzaDisplay);
+    rightSide.appendChild(order);
+    rightSide.appendChild(total);
+    rightSide.appendChild(orderBtn);
+
+    parentContainer.appendChild(rightSide);
+
+});
+
+
+const createOptionBtn = name => {
+    let container = document.createElement("button");
+        container.classList.add("btn");
+        container.classList.add("btn-lg");
+        container.classList.add("btn-block");
+        container.innerHTML = name;
+        return container;
+}

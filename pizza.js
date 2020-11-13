@@ -18,13 +18,15 @@ const pizzaData = {
         "lg": 12.99,
         "xl": 16.99
     },
-    prebuilt:{
-        pepperoniPizza: {
+    prebuilt:[
+        {
+            name: "Pepperoni Pizza",
             toppings: [
                 {name: "pepperoni", position: "all", quantity:"full"}
             ]
         },
-        cowboy: {
+        {
+            name: "Cowboy Pizza",
             toppings: [
                 {name: "pepperoni", position: "all", quantity:"full"},
                 {name: "sausage", position: "all", quantity:"full"},
@@ -32,13 +34,15 @@ const pizzaData = {
                 {name: "mushroom", position: "all", quantity:"full"}
             ]
         },
-        vowelPizza: {
+        {
+            name: "Vowel Pizza",
             toppings: [
                 {name: "avocado", position: "all", quantity:"full"},
                 {name: "olives", position: "all", quantity:"full"}
             ]
         },
-        allMeatTreatPizza: {
+        {
+            name: "All Meat Treat Pizza",
             toppings: [
                 {name: "pepperoni", position: "all", quantity:"full"},
                 {name: "sausage", position: "all", quantity:"full"},
@@ -46,14 +50,15 @@ const pizzaData = {
                 {name: "marshmallow", position: "all", quantity:"full"}
             ]
         },
-        spookyPizza: {
+        {
+            name: "Spooky Pizza",
             toppings: [
                 {name: "cinnamon", position: "all", quantity:"full"},
                 {name: "avocado", position: "all", quantity:"full"},
                 {name: "jalapeno", position: "all", quantity:"full"}
             ]
         }
-    }
+    ]
 }
 
 

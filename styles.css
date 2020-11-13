@@ -39,7 +39,7 @@
   margin-top: 5px;
 }
 
-.page {
+#pizza {
   display: flex;
   flex-direction: row;
   height: 720px;
