@@ -18,3 +18,19 @@
     height: 100%;
     background-color: green;
 }
+
+.config-row {
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    p {
+        text-transform: capitalize;
+    }
+    .config-radio-container {
+        display:flex;
+
+        .radio-group {
+            display:flex;
+        }
+    }
+}

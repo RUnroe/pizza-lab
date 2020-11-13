@@ -56,4 +56,19 @@
   background-color: green;
 }
 
+.config-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.config-row p {
+  text-transform: capitalize;
+}
+.config-row .config-radio-container {
+  display: flex;
+}
+.config-row .config-radio-container .radio-group {
+  display: flex;
+}
+
 /*# sourceMappingURL=styles.css.map */
