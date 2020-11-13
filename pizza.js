@@ -22,40 +22,40 @@ const pizzaData = {
         {
             name: "Pepperoni Pizza",
             toppings: [
-                {name: "pepperoni", position: "all", quantity:"full"}
+                {name: "pepperoni", position: "all", quantity:"reg"}
             ]
         },
         {
             name: "Cowboy Pizza",
             toppings: [
-                {name: "pepperoni", position: "all", quantity:"full"},
-                {name: "sausage", position: "all", quantity:"full"},
-                {name: "olive", position: "all", quantity:"full"},
-                {name: "mushroom", position: "all", quantity:"full"}
+                {name: "pepperoni", position: "all", quantity:"reg"},
+                {name: "sausage", position: "all", quantity:"reg"},
+                {name: "olive", position: "all", quantity:"reg"},
+                {name: "mushroom", position: "all", quantity:"reg"}
             ]
         },
         {
             name: "Vowel Pizza",
             toppings: [
-                {name: "avocado", position: "all", quantity:"full"},
-                {name: "olives", position: "all", quantity:"full"}
+                {name: "avocado", position: "all", quantity:"reg"},
+                {name: "olive", position: "all", quantity:"reg"}
             ]
         },
         {
             name: "All Meat Treat Pizza",
             toppings: [
-                {name: "pepperoni", position: "all", quantity:"full"},
-                {name: "sausage", position: "all", quantity:"full"},
-                {name: "ham", position: "all", quantity:"full"},
-                {name: "marshmallow", position: "all", quantity:"full"}
+                {name: "pepperoni", position: "all", quantity:"reg"},
+                {name: "sausage", position: "all", quantity:"reg"},
+                {name: "ham", position: "all", quantity:"reg"},
+                {name: "marshmallow", position: "all", quantity:"reg"}
             ]
         },
         {
             name: "Spooky Pizza",
             toppings: [
-                {name: "cinnamon", position: "all", quantity:"full"},
-                {name: "avocado", position: "all", quantity:"full"},
-                {name: "jalapeno", position: "all", quantity:"full"}
+                {name: "cinnamon", position: "all", quantity:"reg"},
+                {name: "avocado", position: "all", quantity:"reg"},
+                {name: "jalapeno", position: "all", quantity:"reg"}
             ]
         }
     ]
@@ -67,7 +67,7 @@ const pizzaData = {
 // let objectName = {
 //     size: "sm",
 //     toppings: [
-//         {name: "pepperoni", position: "left", quantity:"full"}, 
+//         {name: "pepperoni", position: "left", quantity:"reg"}, 
 //         {name: "olives", position: "all", quantity:"double"} 
 //     ]
 // }

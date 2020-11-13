@@ -10,6 +10,7 @@
 .leftSide{
     width: 65%;
     height: 100%;
+    position: relative;
     // background-color: red;
 }
 
@@ -42,5 +43,24 @@
                 }
             }
         }
+    }
+}
+
+
+.selection-container {
+    overflow:hidden;
+    height:100%;
+    transition: height 0.5s ease;
+    &.hidden {
+        height:0;
+    }
+}
+
+.config-menu {
+    overflow:hidden;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    &.hidden {
+        opacity: 0;
     }
 }

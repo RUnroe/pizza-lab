@@ -48,6 +48,7 @@
 .leftSide {
   width: 65%;
   height: 100%;
+  position: relative;
 }
 
 .rightSide {
@@ -80,6 +81,24 @@
 }
 .config-row .config-radio-container .config-radio-group .config-radio-div input {
   margin: auto;
+}
+
+.selection-container {
+  overflow: hidden;
+  height: 100%;
+  transition: height 0.5s ease;
+}
+.selection-container.hidden {
+  height: 0;
+}
+
+.config-menu {
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.config-menu.hidden {
+  opacity: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */
