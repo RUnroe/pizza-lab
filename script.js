@@ -17,7 +17,7 @@ const calculatePrice = pizzaObject => {
     //For each topping listed: Add 1 to price if quantity == "reg", 2 if quantity == "double"
     for(topping of pizzaObject.toppings) {
         if(topping.quantity == "reg") price += 1;
-        else if(topping.quantity == "double") price += 2;
+        else if(topping.quantity == "dbl") price += 2;
     }
 
     //Truncate to 2 digit decimal
@@ -171,9 +171,9 @@ const createConfigToppingRow = (index, topping) => {
     radioBtnContainer.classList.add("config-radio-container");
     let radioGroup = document.createElement("div");
     radioGroup.classList.add("config-radio-group");
+    radioGroup.appendChild(createRadioDiv(index, "None", "amount", true));
     radioGroup.appendChild(createRadioDiv(index, "Reg", "amount"));
     radioGroup.appendChild(createRadioDiv(index, "Dbl", "amount"));
-    radioGroup.appendChild(createRadioDiv(index, "None", "amount", true));
     radioBtnContainer.appendChild(radioGroup);
     
     //Made radio button group for position of topping
@@ -202,11 +202,13 @@ const createRadioDiv = (index, labelName, groupName, isChecked) => {
     radioBtn.setAttribute("type", "radio");
     radioBtn.id = labelName + index;
     radioBtn.setAttribute("name", groupName + index);
-    radioBtn.setAttribute("value", labelName);
+    radioBtn.setAttribute("value", labelName.toLowerCase());
 
     //Give radio btn an event listener to know when pizza changed
-    radioBtn.addEventListener("input", () => {pizzaConfigChange();});
+    radioBtn.addEventListener("input", (event) => {pizzaConfigChange(event.target);});
 
+    //Disable radio buttons by default
+    if(labelName == "Left" || labelName == "All" || labelName == "Right") radioBtn.disabled = true;
     //Set default checked
     if(isChecked) radioBtn.checked = true;
     //Append label and btn to container
@@ -221,10 +223,9 @@ const createRadioDiv = (index, labelName, groupName, isChecked) => {
 const populateDataIntoConfigMenu = pizzaObject => {
     for(topping of pizzaObject.toppings) {
         let configRow = document.querySelector(`[data-topping='${topping.name}']`);
-        console.log(configRow, configRow.querySelector(`[data-name='amount-${topping.quantity}']`));
         configRow.querySelector(`[data-name='amount-${topping.quantity}']`).lastChild.checked = true;
         configRow.querySelector(`[data-name='position-${topping.position}']`).lastChild.checked = true;
-
+        enableRadioButtons(configRow.lastChild.lastChild.children);
     }
 }
 
@@ -236,7 +237,10 @@ const showConfigMenu = pizzaObject => {
     setTimeout(() => {
         document.getElementsByClassName("config-menu")[0].classList.remove("hidden");
     }, 500);
+
     populateDataIntoConfigMenu(pizzaObject);
+    updateScreen();
+
 }
 
 const hideConfigMenu = () => {
@@ -245,8 +249,9 @@ const hideConfigMenu = () => {
     setTimeout(() => {
         document.getElementsByClassName("config-menu")[0].style.display = "none";
         document.getElementsByClassName("selection-container")[0].classList.remove("hidden");
-    }, 500);
+    }, 600);
 
+    //Reset Pizza object
     currPizza = {
         size: "lg",
         toppings: []
@@ -257,36 +262,95 @@ const hideConfigMenu = () => {
 
 
 //Update the pizza object and screen when radio button is changed
-const pizzaConfigChange = () => {
+const pizzaConfigChange = target => {
     updatePizzaObject();
+    toggleAvailabilityOfRadioBtns(target);
+    updateScreen();
+}
 
+//Update screen
+const updateScreen = () => {
     updatePrice();
     updateDescription();
     updatePizzaImage();
 }
 
+//Disable LEFT ALL and RIGHT radion buttons when topping is not selected.
+const toggleAvailabilityOfRadioBtns = target => {
+    if(target.value == "none") {
+        //disable btns
+        disableRadioButtons(target.parentElement.parentElement.parentElement.lastChild.children);
+    }
+    else if(target.value == "dbl" || target.value == "reg") {
+        //enable btns
+        enableRadioButtons(target.parentElement.parentElement.parentElement.lastChild.children);
+    }
+}
 
+const disableRadioButtons = radioGroup => {
+    for(radioDiv of radioGroup) {
+        radioDiv.lastChild.disabled = true;
+    }
+}
+const enableRadioButtons = radioGroup => {
+    for(radioDiv of radioGroup) {
+        radioDiv.lastChild.disabled = false;
+    }
+}
+
+//Update price on screen
 const updatePrice = () => {
     document.getElementsByClassName("total")[0].innerHTML = `Total: $${calculatePrice(currPizza)}`;
     
 }
 
 const updatePizzaObject = () => {
+
+    //Find which radio button was checked in the size row
     for(configRadioDiv of document.getElementsByClassName("config-menu")[0].firstChild.getElementsByClassName("config-radio-div")) {
         if(configRadioDiv.lastChild.checked) {
-            currPizza.size = (configRadioDiv.dataset.name.split("-")[1]);
+            currPizza.size = configRadioDiv.lastChild.value;
             break;
         }
     }
-    for(let i = 1; i < document.getElementsByClassName("config-menu"); i++) {
-        let toppingRow = document.getElementsByClassName("config-menu")[i];
+    let toppingList = [];
+    //Loop through toppings rows
+    for(let i = 1; i < document.getElementsByClassName("config-row").length; i++) {
+        let toppingRow = document.getElementsByClassName("config-row")[i];
         let toppingObject = {name: toppingRow.dataset.topping, position: "", quantity: ""};
-
+        for(amount of toppingRow.getElementsByClassName("config-radio-group")[0].getElementsByClassName("config-radio-div")) {
+            if(amount.lastChild.checked) {
+                toppingObject.quantity = amount.lastChild.value;
+                break;
+            }
+        }
+        for(position of toppingRow.getElementsByClassName("config-radio-group")[1].getElementsByClassName("config-radio-div")) {
+            if(position.lastChild.checked) {
+                toppingObject.position = position.lastChild.value;
+                break;
+            }
+        }
+        if(toppingObject.quantity != "none") toppingList.push(toppingObject);
     }
+    currPizza.toppings = toppingList;
+    console.log(currPizza);
 }
 
 const updateDescription = () => {
 
+    document.getElementsByClassName("order")[0].innerHTML = "";
+
+    let title = document.createElement("h5");
+    title.innerHTML = `${currPizza.size} Pizza`;
+
+    let list = document.createElement("ul");
+    for(topping of currPizza.toppings) {
+        let item = document.createElement("li");
+        item.innerHTML = `${topping.quantity} ${topping.name} on ${topping.position}`;
+        list.appendChild(item);
+    }
+    document.getElementsByClassName("order")[0].appendChild(title);
+    document.getElementsByClassName("order")[0].appendChild(list);
 }
 
 const updatePizzaImage = () => {

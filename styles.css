@@ -95,7 +95,7 @@
 .config-menu {
   overflow: hidden;
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 .config-menu.hidden {
   opacity: 0;

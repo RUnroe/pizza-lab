@@ -68,6 +68,6 @@ const pizzaData = {
 //     size: "sm",
 //     toppings: [
 //         {name: "pepperoni", position: "left", quantity:"reg"}, 
-//         {name: "olives", position: "all", quantity:"double"} 
+//         {name: "olives", position: "all", quantity:"dbl"} 
 //     ]
 // }
