@@ -46,7 +46,9 @@
     }
 }
 
-
+.order {
+    overflow-x:hidden;
+}
 .selection-container {
     overflow:hidden;
     height:100%;
@@ -63,4 +65,9 @@
     &.hidden {
         opacity: 0;
     }
+}
+.config-header {
+    width:100%;
+    display:flex;
+    justify-content: space-between;
 }

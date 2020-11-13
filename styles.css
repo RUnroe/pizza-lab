@@ -83,6 +83,10 @@
   margin: auto;
 }
 
+.order {
+  overflow-x: hidden;
+}
+
 .selection-container {
   overflow: hidden;
   height: 100%;
@@ -99,6 +103,12 @@
 }
 .config-menu.hidden {
   opacity: 0;
+}
+
+.config-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=styles.css.map */

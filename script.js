@@ -102,17 +102,18 @@ const createOptionBtn = (name, prebuiltPizza) => {
             //Change current pizza to be the contents of the prebuilt pizza clicked
             if(prebuiltPizza) {
                 currPizza = {
+                    name: prebuiltPizza.name,
                     size: "lg",
                     toppings: prebuiltPizza.toppings
                 }
             }
             else {
                 currPizza = {
+                    name: "Custom Pizza",
                     size: "lg",
                     toppings: []
                 }
             }
-            console.log(currPizza);
             //Populate config menu with correct preset data
             showConfigMenu(currPizza);
         });
@@ -127,6 +128,20 @@ const createPizzaConfigMenu = () => {
     pizzaConfigMenu.classList.add("config-menu");
     pizzaConfigMenu.classList.add("hidden");
     pizzaConfigMenu.style.display = "none";
+
+    //Config Header
+    let header = document.createElement("div");
+    header.classList.add("config-header");
+    //Header Text
+    let headerText = document.createElement("h2");
+    header.appendChild(headerText);
+    //Header close btn
+    let headerCloseBtn = document.createElement("button");
+    headerCloseBtn.innerHTML = "&times;";
+    headerCloseBtn.addEventListener("click", () => {hideConfigMenu();});
+    header.appendChild(headerCloseBtn);
+    pizzaConfigMenu.appendChild(header);
+
     //Size choice
     let size = document.createElement("div");
     size.classList.add("config-row");
@@ -221,6 +236,9 @@ const createRadioDiv = (index, labelName, groupName, isChecked) => {
 
 
 const populateDataIntoConfigMenu = pizzaObject => {
+    //Set title
+    document.getElementsByClassName("config-header")[0].firstChild.innerHTML = pizzaObject.name;
+    //Check correct radio btns based on pizza passed in
     for(topping of pizzaObject.toppings) {
         let configRow = document.querySelector(`[data-topping='${topping.name}']`);
         configRow.querySelector(`[data-name='amount-${topping.quantity}']`).lastChild.checked = true;
@@ -256,6 +274,10 @@ const hideConfigMenu = () => {
         size: "lg",
         toppings: []
     }
+    //Clear pizza output box and price
+    document.getElementsByClassName("order")[0].innerHTML = "";
+    document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
+
 }
 
 
@@ -307,14 +329,14 @@ const updatePrice = () => {
 const updatePizzaObject = () => {
 
     //Find which radio button was checked in the size row
-    for(configRadioDiv of document.getElementsByClassName("config-menu")[0].firstChild.getElementsByClassName("config-radio-div")) {
+    for(configRadioDiv of document.getElementsByClassName("config-menu")[0].children[1].getElementsByClassName("config-radio-div")) {
         if(configRadioDiv.lastChild.checked) {
             currPizza.size = configRadioDiv.lastChild.value;
             break;
         }
     }
     let toppingList = [];
-    //Loop through toppings rows
+    //Loop through toppings rows. Start at 1 because element 0 is Special case (size) and is checked seperately
     for(let i = 1; i < document.getElementsByClassName("config-row").length; i++) {
         let toppingRow = document.getElementsByClassName("config-row")[i];
         let toppingObject = {name: toppingRow.dataset.topping, position: "", quantity: ""};
@@ -330,10 +352,10 @@ const updatePizzaObject = () => {
                 break;
             }
         }
+        //Dont add topping of quantity is none
         if(toppingObject.quantity != "none") toppingList.push(toppingObject);
     }
     currPizza.toppings = toppingList;
-    console.log(currPizza);
 }
 
 const updateDescription = () => {
