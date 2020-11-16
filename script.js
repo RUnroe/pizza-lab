@@ -76,6 +76,8 @@ const createLayout = () => {
     let orderBtn = document.createElement("button");
     orderBtn.innerHTML = "Order";
     orderBtn.addEventListener("click", () => {completeOrder();});
+    //default disabled
+    orderBtn.disabled = true;
     orderBtn.classList.add("orderButton");
 
     //Nest all elements
@@ -273,8 +275,8 @@ const showConfigMenu = pizzaObject => {
     document.getElementsByClassName("config-menu")[0].style.display = "";
     setTimeout(() => {
         document.getElementsByClassName("config-menu")[0].classList.remove("hidden");
+        document.getElementsByClassName("orderButton")[0].disabled = false;
     }, 500);
-
     populateDataIntoConfigMenu(pizzaObject);
     updateScreen();
 
@@ -283,6 +285,7 @@ const showConfigMenu = pizzaObject => {
 const hideConfigMenu = () => {
     //Change view with transitions
     document.getElementsByClassName("config-menu")[0].classList.add("hidden");
+    document.getElementsByClassName("orderButton")[0].disabled = true;
     setTimeout(() => {
         document.getElementsByClassName("config-menu")[0].style.display = "none";
         document.getElementsByClassName("selection-container")[0].classList.remove("hidden");
