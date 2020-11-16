@@ -75,6 +75,7 @@ const createLayout = () => {
     //make order button
     let orderBtn = document.createElement("button");
     orderBtn.innerHTML = "Order";
+    orderBtn.addEventListener("click", () => {completeOrder();});
     orderBtn.classList.add("orderButton");
 
     //Nest all elements
@@ -377,6 +378,7 @@ const updatePizzaObject = () => {
     currPizza.toppings = toppingList;
 }
 
+
 const updateDescription = () => {
 
     document.getElementsByClassName("order")[0].innerHTML = "";
@@ -394,6 +396,29 @@ const updateDescription = () => {
     document.getElementsByClassName("order")[0].appendChild(list);
 }
 
+
+
 const updatePizzaImage = () => {
 
+}
+
+
+const completeOrder = () => {
+    //Get pizza div and empty it
+    let parentContainer = document.getElementById("pizza");
+    parentContainer.innerHTML = "";
+
+    //Create end text message and append it to the screen
+    let endText = document.createElement("h1");
+    endText.innerHTML = "Thank You for your Order!";
+    endText.classList.add("endText");
+    parentContainer.appendChild(endText);
+
+    //Create order box so user can see their final piza
+    let order = document.createElement("div");
+    order.classList.add("order");
+    parentContainer.appendChild(order);
+
+    //Populate order box
+    updateDescription();
 }
