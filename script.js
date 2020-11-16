@@ -390,27 +390,26 @@ const updatePizzaObject = () => {
 
 
 const updateDescription = () => {
-
+    //Find order div and clear it
     document.getElementsByClassName("order")[0].innerHTML = "";
 
+    //Create order header
     let title = document.createElement("h5");
     title.innerHTML = `${currPizza.size} Pizza`;
 
+    //Create order ul list 
     let list = document.createElement("ul");
     for(topping of currPizza.toppings) {
         let item = document.createElement("li");
         item.innerHTML = `${topping.quantity} ${topping.name} on ${topping.position}`;
         list.appendChild(item);
     }
+    //Append elements to order div
     document.getElementsByClassName("order")[0].appendChild(title);
     document.getElementsByClassName("order")[0].appendChild(list);
 }
 
 
-
-const updatePizzaImage = () => {
-
-}
 
 
 const completeOrder = () => {
@@ -431,4 +430,20 @@ const completeOrder = () => {
 
     //Populate order box
     updateDescription();
+}
+
+
+
+
+const updatePizzaImage = pizzaObject => {
+    //This one is for MR JOE
+
+    // This is how the pizza object will be structured
+    // pizzaObject = {
+    //     size: "lg",
+    //     toppings: []
+    // }
+
+
+    //pizzaData.toppings is the array of objects, each containing a 'name' and 'imgSrc'
 }
