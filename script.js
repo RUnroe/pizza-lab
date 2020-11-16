@@ -285,6 +285,11 @@ const showConfigMenu = pizzaObject => {
         document.getElementsByClassName("orderButton")[0].disabled = false;
     }, 500);
     populateDataIntoConfigMenu(pizzaObject);
+    
+    //Clear pizza output box and price
+    document.getElementsByClassName("order")[0].innerHTML = "";
+    document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
+    
     updateScreen();
 
 }
@@ -292,7 +297,7 @@ const showConfigMenu = pizzaObject => {
 const hideConfigMenu = () => {
     //Change view with transitions
     document.getElementsByClassName("config-menu")[0].classList.add("hidden");
-    document.getElementsByClassName("orderButton")[0].disabled = true;
+    // document.getElementsByClassName("orderButton")[0].disabled = true;
     setTimeout(() => {
         document.getElementsByClassName("config-menu")[0].style.display = "none";
         document.getElementsByClassName("selection-container")[0].classList.remove("hidden");
@@ -303,9 +308,8 @@ const hideConfigMenu = () => {
         size: "lg",
         toppings: []
     }
-    //Clear pizza output box and price
-    document.getElementsByClassName("order")[0].innerHTML = "";
-    document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
+    
+    
 
 
 }

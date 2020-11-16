@@ -1,8 +1,26 @@
-.btn-block{
-    width: 90%;
-    height: 75px;
-    margin-left:25px;
-    margin-right:25px ;
-    text-align: right;
-    background-color: yellow;
+.btn-block {
+  width: 90%;
+  height: 75px;
+  margin-left: 25px;
+  margin-right: 25px;
+  text-align: center;
+  background-color: #e74949;
+  border-radius: 20px;
+  font-family: PizzaFont;
+  font-size: 30px;
+  font-weight: bolder;
+  color: #ffffff;
+}
+
+@font-face {
+  font-family: "PizzaFont";
+  src: "fonts/Zetafonts - Blacker Pro Titling Bold.otf";
+}
+
+@media only screen and (max-width: 500px) {
+  .btn-block {
+    height: 40px;
+    margin: auto;
+    font-size: 25px;
+  }
 }

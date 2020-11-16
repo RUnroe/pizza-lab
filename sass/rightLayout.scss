@@ -4,6 +4,7 @@
   height: 50%;
   margin: auto;
   margin-top: 30px;
+  border: black solid;
 }
 
 .order {
@@ -12,6 +13,7 @@
   height: 20%;
   margin: auto;
   margin-top: 25px;
+  border: black solid;
 }
 
 .total {
@@ -22,10 +24,14 @@
   height: 5%;
   margin: auto;
   margin-top: 10px;
+  border: black solid;
 }
 
 .orderButton {
   width: 80%;
-  margin: 53px;
+  margin: 43px;
   margin-top: 5px;
+}
+
+@media only screen and (max-wdith: 500px) {
 }
