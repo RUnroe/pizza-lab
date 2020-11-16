@@ -1,17 +1,169 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 3 | @use 'mobile.scss';
- *   | ^^^^^^^^^^^^^^^^^^
- *   '
- *   sass\styles.scss 3:1  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 3 \2502  @use 'mobile.scss';\d\a   \2502  ^^^^^^^^^^^^^^^^^^\a   \2575 \a   sass\\styles.scss 3:1  root stylesheet";
+.btn-block {
+  width: 90%;
+  height: 75px;
+  margin-left: 25px;
+  margin-right: 25px;
+  text-align: center;
+  background-color: #e74949;
+  border-radius: 20px;
+  font-family: PizzaFont;
+  font-size: 30px;
+  font-weight: bolder;
+  color: #ffffff;
 }
+
+@font-face {
+  font-family: "PizzaFont";
+  src: "fonts/Zetafonts - Blacker Pro Titling Bold.otf";
+}
+@media only screen and (max-width: 500px) {
+  .btn-block {
+    height: 40px;
+    margin: auto;
+    font-size: 25px;
+  }
+}
+.pizza {
+  background-color: #ffffff;
+  width: 80%;
+  height: 50%;
+  margin: auto;
+  margin-top: 30px;
+  border: black solid;
+}
+
+.order {
+  background-color: #ffffff;
+  width: 80%;
+  height: 20%;
+  margin: auto;
+  margin-top: 25px;
+  border: black solid;
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  width: 80%;
+  height: 5%;
+  margin: auto;
+  margin-top: 10px;
+  border: black solid;
+}
+
+.orderButton {
+  width: 80%;
+  margin: 43px;
+  margin-top: 5px;
+}
+
+body {
+  background-color: #ecd9ba;
+}
+
+#pizza {
+  display: flex;
+  flex-direction: row;
+  height: 720px;
+}
+
+.leftSide {
+  width: 65%;
+  height: 100%;
+  position: relative;
+  border-right: #000 solid;
+  padding-top: 50px;
+}
+
+.rightSide {
+  width: 35%;
+  height: 100%;
+  margin-left: 10px;
+}
+
+.config-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  border: 1px solid #000;
+}
+.config-row p {
+  text-transform: capitalize;
+}
+.config-row .config-radio-container {
+  display: flex;
+}
+.config-row .config-radio-container .config-radio-group {
+  display: flex;
+  padding: 0 0.4em;
+}
+.config-row .config-radio-container .config-radio-group .config-radio-div {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.3em;
+}
+.config-row .config-radio-container .config-radio-group .config-radio-div input {
+  margin: auto;
+}
+
+.order {
+  overflow-x: hidden;
+}
+
+.selection-container {
+  overflow: hidden;
+  height: 100%;
+  transition: height 0.5s ease;
+}
+.selection-container.hidden {
+  height: 0;
+}
+
+.config-menu {
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.config-menu.hidden {
+  opacity: 0;
+}
+
+.config-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 500px) {
+  #pizza {
+    flex-direction: column-reverse;
+  }
+
+  .leftSide {
+    width: 100%;
+    border: none;
+  }
+
+  .rightSide {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .order {
+    font-size: 10px;
+    margin-top: none;
+  }
+
+  .total {
+    height: 10%;
+  }
+
+  .orderButton {
+    margin-bottom: 10px;
+    margin-left: 32px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
