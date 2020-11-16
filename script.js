@@ -14,12 +14,13 @@ let currPizza = {
 const calculatePrice = pizzaObject => {
     //Base price based on size
     let price = pizzaData.prices[pizzaObject.size];
-    //For each topping listed: Add 1 to price if quantity == "reg", 2 if quantity == "double"
+    //Count amount of toppings
+    let toppingCount = 0;
     for(topping of pizzaObject.toppings) {
-        if(topping.quantity == "reg") price += 1;
-        else if(topping.quantity == "dbl") price += 2;
+        if(topping.quantity == "reg") toppingCount += 1;
+        else if(topping.quantity == "dbl") toppingCount += 2;
     }
-
+    price += calculateToppingPrice(toppingCount);
     //Truncate to 2 digit decimal
     price = Math.floor(price * 100) / 100;
 
@@ -27,7 +28,13 @@ const calculatePrice = pizzaObject => {
 
 }
 
-
+const calculateToppingPrice = amount => {
+    //if amount is between 1 and 4 (inclusive), return the amount -1
+    if(amount >= 1 && amount <= 4) return amount-1;
+    //if amount is 5 or above, return the amount -2
+    else if(amount > 4) return amount-2;
+    return 0;
+}
 
 //On window load
 document.addEventListener("DOMContentLoaded", () => {
