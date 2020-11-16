@@ -14,12 +14,13 @@ let currPizza = {
 const calculatePrice = pizzaObject => {
     //Base price based on size
     let price = pizzaData.prices[pizzaObject.size];
-    //For each topping listed: Add 1 to price if quantity == "reg", 2 if quantity == "double"
+    //Count amount of toppings
+    let toppingCount = 0;
     for(topping of pizzaObject.toppings) {
-        if(topping.quantity == "reg") price += 1;
-        else if(topping.quantity == "dbl") price += 2;
+        if(topping.quantity == "reg") toppingCount += 1;
+        else if(topping.quantity == "dbl") toppingCount += 2;
     }
-
+    price += calculateToppingPrice(toppingCount);
     //Truncate to 2 digit decimal
     price = Math.floor(price * 100) / 100;
 
@@ -27,7 +28,13 @@ const calculatePrice = pizzaObject => {
 
 }
 
-
+const calculateToppingPrice = amount => {
+    //if amount is between 1 and 4 (inclusive), return the amount -1
+    if(amount >= 1 && amount <= 4) return amount-1;
+    //if amount is 5 or above, return the amount -2
+    else if(amount > 4) return amount-2;
+    return 0;
+}
 
 //On window load
 document.addEventListener("DOMContentLoaded", () => {
@@ -75,6 +82,9 @@ const createLayout = () => {
     //make order button
     let orderBtn = document.createElement("button");
     orderBtn.innerHTML = "Order";
+    orderBtn.addEventListener("click", () => {completeOrder();});
+    //default disabled
+    orderBtn.disabled = true;
     orderBtn.classList.add("orderButton");
 
     //Nest all elements
@@ -272,8 +282,8 @@ const showConfigMenu = pizzaObject => {
     document.getElementsByClassName("config-menu")[0].style.display = "";
     setTimeout(() => {
         document.getElementsByClassName("config-menu")[0].classList.remove("hidden");
+        document.getElementsByClassName("orderButton")[0].disabled = false;
     }, 500);
-
     populateDataIntoConfigMenu(pizzaObject);
     updateScreen();
 
@@ -282,6 +292,7 @@ const showConfigMenu = pizzaObject => {
 const hideConfigMenu = () => {
     //Change view with transitions
     document.getElementsByClassName("config-menu")[0].classList.add("hidden");
+    document.getElementsByClassName("orderButton")[0].disabled = true;
     setTimeout(() => {
         document.getElementsByClassName("config-menu")[0].style.display = "none";
         document.getElementsByClassName("selection-container")[0].classList.remove("hidden");
@@ -377,23 +388,62 @@ const updatePizzaObject = () => {
     currPizza.toppings = toppingList;
 }
 
-const updateDescription = () => {
 
+const updateDescription = () => {
+    //Find order div and clear it
     document.getElementsByClassName("order")[0].innerHTML = "";
 
+    //Create order header
     let title = document.createElement("h5");
     title.innerHTML = `${currPizza.size} Pizza`;
 
+    //Create order ul list 
     let list = document.createElement("ul");
     for(topping of currPizza.toppings) {
         let item = document.createElement("li");
         item.innerHTML = `${topping.quantity} ${topping.name} on ${topping.position}`;
         list.appendChild(item);
     }
+    //Append elements to order div
     document.getElementsByClassName("order")[0].appendChild(title);
     document.getElementsByClassName("order")[0].appendChild(list);
 }
 
-const updatePizzaImage = () => {
 
+
+
+const completeOrder = () => {
+    //Get pizza div and empty it
+    let parentContainer = document.getElementById("pizza");
+    parentContainer.innerHTML = "";
+
+    //Create end text message and append it to the screen
+    let endText = document.createElement("h1");
+    endText.innerHTML = "Thank You for your Order!";
+    endText.classList.add("endText");
+    parentContainer.appendChild(endText);
+
+    //Create order box so user can see their final piza
+    let order = document.createElement("div");
+    order.classList.add("order");
+    parentContainer.appendChild(order);
+
+    //Populate order box
+    updateDescription();
+}
+
+
+
+
+const updatePizzaImage = pizzaObject => {
+    //This one is for MR JOE
+
+    // This is how the pizza object will be structured
+    // pizzaObject = {
+    //     size: "lg",
+    //     toppings: []
+    // }
+
+
+    //pizzaData.toppings is the array of objects, each containing a 'name' and 'imgSrc'
 }
