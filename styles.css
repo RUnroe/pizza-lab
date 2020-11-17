@@ -73,7 +73,7 @@ body {
   height: 100%;
   position: relative;
   border-right: #000 solid;
-  padding-top: 50px;
+  margin-top: 50px;
 }
 
 .rightSide {
