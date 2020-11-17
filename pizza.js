@@ -1,16 +1,16 @@
 // Object holding toppings, prices, and pre-built pizzas 
 const pizzaData = {
     toppings: [
-        {name: "pepperoni", imgSrc:""},
-        {name: "olive", imgSrc:""},
-        {name: "sausage", imgSrc:""},
-        {name: "mushroom", imgSrc:""},
-        {name: "ham", imgSrc:""},
-        {name: "jalapeno", imgSrc:""},
-        {name: "marshmallow", imgSrc:""},
-        {name: "pizza roll", imgSrc:""},
-        {name: "cinnamon", imgSrc:""},
-        {name: "avocado", imgSrc:""}
+        {name: "pepperoni",   display: {reg: 70, dbl: 70, sizePct: 5, spacing: 0.15, imgSrc:"img/pep.png"  }},
+        {name: "olive",       display: {reg: 70, dbl: 70, sizePct: 3, spacing: 0.10, imgSrc:"img/olive.png"}},
+        {name: "sausage",     display: {reg: 20, dbl: 20, sizePct: 4, spacing: 0.20, imgSrc:"img/sosig.png"}},
+        {name: "mushroom",    display: {reg: 10, dbl: 15, sizePct: 5, spacing: 0.15, imgSrc:""             }},
+        {name: "ham",         display: {reg: 10, dbl: 15, sizePct: 5, spacing: 0.15, imgSrc:""             }},
+        {name: "jalapeno",    display: {reg: 10, dbl: 15, sizePct: 5, spacing: 0.15, imgSrc:""             }},
+        {name: "marshmallow", display: {reg: 10, dbl: 15, sizePct: 5, spacing: 0.15, imgSrc:""             }},
+        {name: "pizza roll",  display: {reg: 10, dbl: 15, sizePct: 5, spacing: 0.15, imgSrc:""             }},
+        {name: "cinnamon",    display: {reg: 10, dbl: 15, sizePct: 5, spacing: 0.15, imgSrc:""             }},
+        {name: "avocado",     display: {reg: 10, dbl: 15, sizePct: 5, spacing: 0.15, imgSrc:""             }}
     ],
     prices:{
         "sm": 6.99,
@@ -58,7 +58,10 @@ const pizzaData = {
                 {name: "jalapeno", position: "all", quantity:"reg"}
             ]
         }
-    ]
+    ],
+	assets: {
+		base: 'img/base.png',
+	}
 }
 
 
