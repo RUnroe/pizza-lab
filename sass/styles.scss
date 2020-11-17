@@ -1,73 +1,122 @@
 @use 'options.scss';
 @use 'rightLayout.scss';
 
-#pizza{
-    display: flex;
-    flex-direction: row;
-    height: 720px;
+body {
+  background-color: #ecd9ba;
 }
 
-.leftSide{
-    width: 65%;
-    height: 100%;
-    position: relative;
-    // background-color: red;
+#pizza {
+  display: flex;
+  flex-direction: row;
+  height: 720px;
 }
 
-.rightSide{
-    width: 35%;
-    height: 100%;
-    background-color: green;
+.leftSide {
+  width: 65%;
+  height: 100%;
+  position: relative;
+  border-right: #000 solid;
+  margin-top: 50px;
+  // padding-top: 50px;
+  // background-color: red;
+}
+
+.rightSide {
+  width: 35%;
+  height: 100%;
+  margin-left: 10px;
+  // background-color: green;
 }
 
 .config-row {
-    width:100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  border: 1px solid #000;
+  p {
+    text-transform: capitalize;
+  }
+  .config-radio-container {
     display: flex;
-    justify-content: space-between;
-    padding:0.5em;
-    border: 1px solid #000;
-    p {
-        text-transform: capitalize;
-    }
-    .config-radio-container {
-        display:flex;
-        .config-radio-group {
-            display:flex;
-            padding: 0 0.4em;
-            .config-radio-div {
-                display:flex;
-                flex-direction: column;
-                padding:0 0.3em;
-                input {
-                    margin:auto;
-                }
-            }
+    .config-radio-group {
+      display: flex;
+      padding: 0 0.4em;
+      .config-radio-div {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0.3em;
+        input {
+          margin: auto;
         }
+      }
     }
+  }
 }
 
 .order {
-    overflow-x:hidden;
+  overflow-x: hidden;
 }
 .selection-container {
-    overflow:hidden;
-    height:100%;
-    transition: height 0.5s ease;
-    &.hidden {
-        height:0;
-    }
+  overflow: hidden;
+  height: 100%;
+  transition: height 0.5s ease;
+  &.hidden {
+    height: 0;
+  }
 }
 
 .config-menu {
-    overflow:hidden;
-    opacity: 1;
-    transition: opacity 0.4s ease;
-    &.hidden {
-        opacity: 0;
-    }
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  &.hidden {
+    opacity: 0;
+  }
 }
 .config-header {
-    width:100%;
-    display:flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.special-deal {
+  font-weight: bold;
+  font-size: 0.75em;
+  background-color: #e74949;
+  padding: 0.3em;
+  border-radius: 7px;
+  color: #fff;
+}
+
+@media only screen and (max-width: 500px) {
+  #pizza {
+    flex-direction: column-reverse;
+  }
+
+  .leftSide {
+    width: 100%;
+    border: none;
+  }
+
+  .rightSide {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .order {
+    font-size: 10px;
+    margin-top: none;
+  }
+
+  .total {
+    height: 10%;
+  }
+
+  .orderButton {
+    // margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 32px;
+    // margin-right: 10px;
+  }
 }

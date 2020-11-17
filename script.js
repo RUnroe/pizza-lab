@@ -285,6 +285,11 @@ const showConfigMenu = pizzaObject => {
 		document.getElementsByClassName("orderButton")[0].disabled = false;
 	}, 500);
 	populateDataIntoConfigMenu(pizzaObject);
+
+	//Clear pizza output box and price
+	document.getElementsByClassName("order")[0].innerHTML = "";
+	document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
+
 	updateScreen();
 
 }
@@ -292,7 +297,7 @@ const showConfigMenu = pizzaObject => {
 const hideConfigMenu = () => {
 	//Change view with transitions
 	document.getElementsByClassName("config-menu")[0].classList.add("hidden");
-	document.getElementsByClassName("orderButton")[0].disabled = true;
+	// document.getElementsByClassName("orderButton")[0].disabled = true;
 	setTimeout(() => {
 		document.getElementsByClassName("config-menu")[0].style.display = "none";
 		document.getElementsByClassName("selection-container")[0].classList.remove("hidden");
@@ -303,11 +308,6 @@ const hideConfigMenu = () => {
 		size: "lg",
 		toppings: []
 	}
-	//Clear pizza output box and price
-	document.getElementsByClassName("order")[0].innerHTML = "";
-	document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
-
-
 }
 
 
@@ -395,13 +395,13 @@ const updateDescription = () => {
 
 	//Create order header
 	let title = document.createElement("h5");
-	title.innerHTML = `${currPizza.size} Pizza`;
+	title.innerHTML = `${formatDescriptionHeader(currPizza.size)} Pizza${isSpecialDeal() ?  " <span class='special-deal'>Special Deal</span>" : ""}`;
 
 	//Create order ul list 
 	let list = document.createElement("ul");
 	for(topping of currPizza.toppings) {
 		let item = document.createElement("li");
-		item.innerHTML = `${topping.quantity} ${topping.name} on ${topping.position}`;
+		item.innerHTML = formatDescriptionItem(topping.quantity, topping.name, topping.position);
 		list.appendChild(item);
 	}
 	//Append elements to order div
@@ -409,13 +409,51 @@ const updateDescription = () => {
 	document.getElementsByClassName("order")[0].appendChild(list);
 }
 
+const isSpecialDeal = () => {
+	let toppingCount = 0;
+	for(topping of currPizza.toppings) {
+		if(topping.quantity == "reg") toppingCount += 1;
+		else if(topping.quantity == "dbl") toppingCount += 2;
+	}
+	return toppingCount > 4;
+}
 
+const formatDescriptionHeader = size => {
+	switch(size) {
+		case "sm": return "Small";
+		case "md": return "Medium";
+		case "lg": return "Large";
+		case "xl": return "Extra large";
+	}
+}
+
+
+const formatDescriptionItem = (quantity, name, position) => {
+	//Change format of text based on position and quantity
+	//If position is all, dont display
+	//If quantity is reg, dont display
+
+	if(position == "all") position = "";
+	else position = ` on ${position} side`;
+
+	if(quantity == "reg") {
+		quantity = "";
+		name = name.split("")[0].toUpperCase() + name.slice(1);
+		return `${name}${position}`;
+	}
+	else if(quantity == "dbl") return `Double ${name}${position}`;
+
+}
 
 
 const completeOrder = () => {
 	//Get pizza div and empty it
 	let parentContainer = document.getElementById("pizza");
 	parentContainer.innerHTML = "";
+
+	//pizza container changed from flex row to flex comlumn
+
+	parentContainer.style.flexDirection = "column";
 
 	//Create end text message and append it to the screen
 	let endText = document.createElement("h1");
@@ -431,6 +469,9 @@ const completeOrder = () => {
 	//Populate order box
 	updateDescription();
 }
+
+
+
 
 
 
