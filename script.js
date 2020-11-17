@@ -421,6 +421,10 @@ const completeOrder = () => {
     let parentContainer = document.getElementById("pizza");
     parentContainer.innerHTML = "";
 
+    //pizza container changed from flex row to flex comlumn
+
+    parentContainer.style.flexDirection = "column";
+
     //Create end text message and append it to the screen
     let endText = document.createElement("h1");
     endText.innerHTML = "Thank You for your Order!";
@@ -432,9 +436,15 @@ const completeOrder = () => {
     order.classList.add("order");
     parentContainer.appendChild(order);
 
+    
+    
+
     //Populate order box
     updateDescription();
 }
+
+
+
 
 
 

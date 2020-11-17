@@ -1,7 +1,6 @@
 @use 'options.scss';
 @use 'rightLayout.scss';
 
-
 body {
   background-color: #ecd9ba;
 }
@@ -78,6 +77,13 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+
+
+.endText{
+  text-align: center;
+  margin-left: 126px;
 }
 
 @media only screen and (max-width: 500px) {
