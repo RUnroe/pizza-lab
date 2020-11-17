@@ -399,7 +399,7 @@ const updateDescription = () => {
 
     //Create order header
     let title = document.createElement("h5");
-    title.innerHTML = `${formatDescriptionHeader(currPizza.size)} Pizza`;
+    title.innerHTML = `${formatDescriptionHeader(currPizza.size)} Pizza${isSpecialDeal() ?  " <span class='special-deal'>Special Deal</span>" : ""}`;
 
     //Create order ul list 
     let list = document.createElement("ul");
@@ -413,6 +413,14 @@ const updateDescription = () => {
     document.getElementsByClassName("order")[0].appendChild(list);
 }
 
+const isSpecialDeal = () => {
+    let toppingCount = 0;
+    for(topping of currPizza.toppings) {
+        if(topping.quantity == "reg") toppingCount += 1;
+        else if(topping.quantity == "dbl") toppingCount += 2;
+    }
+    return toppingCount > 4;
+}
 
 const formatDescriptionHeader = size => {
     switch(size) {
