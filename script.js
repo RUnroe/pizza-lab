@@ -96,6 +96,9 @@ const createLayout = () => {
 	parentContainer.appendChild(rightSide);
 	//End right side
 
+	//Put empty pizza on screen
+	updatePizzaImage(currPizza);
+
 
 }
 
@@ -289,7 +292,7 @@ const showConfigMenu = pizzaObject => {
 	//Clear pizza output box and price
 	document.getElementsByClassName("order")[0].innerHTML = "";
 	document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
-
+	
 	updateScreen();
 
 }
@@ -303,11 +306,7 @@ const hideConfigMenu = () => {
 		document.getElementsByClassName("selection-container")[0].classList.remove("hidden");
 	}, 600);
 
-	//Reset Pizza object
-	currPizza = {
-		size: "lg",
-		toppings: []
-	}
+	
 }
 
 
@@ -394,7 +393,7 @@ const updateDescription = () => {
 	document.getElementsByClassName("order")[0].innerHTML = "";
 
 	//Create order header
-	let title = document.createElement("h5");
+	let title = document.createElement("h3");
 	title.innerHTML = `${formatDescriptionHeader(currPizza.size)} Pizza${isSpecialDeal() ?  " <span class='special-deal'>Special Deal</span>" : ""}`;
 
 	//Create order ul list 

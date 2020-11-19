@@ -1,21 +1,21 @@
+$color-background: #3f3f3f;
+// fff7eb
+
+$color-accent: #2a7e3c;
+$color-text-primary: #fff;
+$color-text-secondary:#ccc;
+
 .btn-block {
   width: 90%;
-  height: 75px;
-  margin-left: 25px;
-  margin-right: 25px;
+  padding:0.6em 0;
   text-align: center;
   background-color: #e74949;
   border-radius: 20px;
-  font-family: PizzaFont;
-  font-size: 30px;
+  font-size: 2em;
   font-weight: bolder;
   color: #ffffff;
 }
 
-@font-face {
-  font-family: "PizzaFont";
-  src: "fonts/Zetafonts - Blacker Pro Titling Bold.otf";
-}
 
 @media only screen and (max-width: 500px) {
   .btn-block {
