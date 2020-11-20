@@ -508,7 +508,7 @@ const updatePizzaImage = pizzaObject => {
 	addImageWithClasses(pizzaData.assets.base, 'full-size');
 
 	const addTopping = topping => {
-		let ref = pizzaData.toppings.filter(t => t.name === topping.name)[0];
+		let ref = pizzaData.toppings.filter(t => t.name === topping.name.replaceAll('-',' '))[0];
 
 		let nodes = [];
 		for (let i = 0; i < ref.display[topping.quantity]; i++) {
@@ -534,7 +534,7 @@ const updatePizzaImage = pizzaObject => {
 			let n = nodes[node];
 			n.style.transform = `translate(${(3500/ref.display.sizePct)*tX}%, ${(3500/ref.display.sizePct)*tY}%) rotate(${360*prng()}deg)`;
 			n.style.width  = ref.display.sizePct + '%';
-			n.style.height = ref.display.sizePct + '%';
+			//n.style.height = ref.display.sizePct + '%';
 			n.style.left = (100 - ref.display.sizePct)/2 + '%';
 			n.style.top = (100 - ref.display.sizePct)/2 + '%';
 
@@ -554,9 +554,9 @@ const updatePizzaImage = pizzaObject => {
 	for (let topping of pizzaObject.toppings) {
 		prng = prngg(window.performance.getEntries()[0].loadEventStart + Array.from(topping.name).map(x => x.charCodeAt(0)).reduce((x,y) => x*y));
 		console.log(topping);
-		addTopping(topping);
 		if (topping.quantity === 'dbl')
 			addTopping(Object.assign({}, topping, {quantity: 'reg'}));
+		addTopping(topping);
 	};
 
 }
