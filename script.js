@@ -67,7 +67,7 @@ const createLayout = () => {
 	parentContainer.appendChild(leftSide);
 	//End left side
 
-	//Make left side div
+	//Make right side div
 	let rightSide = document.createElement("div");
 	rightSide.classList.add("rightSide");
 
@@ -221,7 +221,7 @@ const createRadioDiv = (index, labelName, groupName, isChecked) => {
 	radioDiv.setAttribute("data-name", `${groupName}-${labelName.toLowerCase()}`);
 	//make label. set label for  and label text equal to the name of the label 
 	let label = document.createElement("label");
-	label.htmlFor = labelName;
+	label.htmlFor = labelName + index;
 	label.innerHTML = labelName;
 	//Create radio button and give it its proper group
 	let radioBtn = document.createElement("input");
@@ -233,6 +233,7 @@ const createRadioDiv = (index, labelName, groupName, isChecked) => {
 	//Give radio btn an event listener to know when pizza changed
 	radioBtn.addEventListener("input", (event) => {pizzaConfigChange(event.target);});
 
+	
 	//Disable radio buttons by default
 	if(labelName == "Left" || labelName == "All" || labelName == "Right") radioBtn.disabled = true;
 	//Set default checked
@@ -284,7 +285,7 @@ const showConfigMenu = pizzaObject => {
 	setTimeout(() => {
 		document.getElementsByClassName("config-menu")[0].classList.remove("hidden");
 		document.getElementsByClassName("orderButton")[0].disabled = false;
-	}, 500);
+	}, 550);
 	populateDataIntoConfigMenu(pizzaObject);
 
 	//Clear pizza output box and price
@@ -420,7 +421,7 @@ const formatDescriptionHeader = size => {
 		case "sm": return "Small";
 		case "md": return "Medium";
 		case "lg": return "Large";
-		case "xl": return "Extra large";
+		case "xl": return "Extra Large";
 	}
 }
 

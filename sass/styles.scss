@@ -1,7 +1,7 @@
 @use 'options.scss';
 @use 'rightLayout.scss';
 @use 'preview.css';
-
+@use "sass:color";
 
 
 button {
@@ -57,7 +57,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
-  border-bottom: 2px solid options.$color-primary;
+  border-bottom: 1.7px solid options.$color-primary;
   box-sizing: border-box;
 
   p {
@@ -71,10 +71,17 @@ body {
       .config-radio-div {
         display: flex;
         flex-direction: column;
+        position: relative;
         padding: 0 0.3em;
+        min-width: 1.7em;
         color: options.$color-text-secondary;
         input {
-          margin: auto;
+          margin: 0 auto;
+        }
+        label {
+          padding-bottom:0.4em;
+          font-size: 0.85em;
+          text-align: center;
         }
       }
     }
@@ -86,10 +93,10 @@ body {
 }
 .selection-container {
   overflow: hidden;
-  height: 100%;
-  transition: height 0.5s ease;
+  max-height: 100vh;
+  transition: max-height 0.45s ease-out;
   &.hidden {
-    height: 0;
+    max-height: 0;
   }
 }
 
@@ -109,7 +116,18 @@ body {
   justify-content: space-between;
   button {
     border:0;
-    background-color: none;
+    background: none;
+    font-size: 1.7em;
+    font-weight: bold;
+    color:#fff;
+    outline:none;
+    transition: color 0.3s ease;
+    &:hover {
+      color:options.$color-secondary;
+    }
+    &:active {
+      color:darken(options.$color-secondary, 20%);
+    }
   }
 }
 
@@ -132,10 +150,13 @@ body {
   font-size: 1.5em;
   color:#fff;
   margin-left: 0;
-  transition: margin-left 0.4s ease;
+  transition: margin-left 0.4s ease, color 0.2s ease;
   &:hover {
     color: options.$color-primary;
     margin-left:7px;
+  }
+  &:active {
+    color:darken(options.$color-primary, 10%);
   }
 }
 
