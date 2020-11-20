@@ -24,7 +24,7 @@ body {
 
 #pizza {
   display: grid;
-  grid-template-columns: 1fr 22em;
+  grid-template-columns: 1fr 30em;
   min-height:100vh;
   width:100%;
   position: relative;
@@ -43,10 +43,10 @@ body {
   position:fixed;
   top:0;
   right:0;
-  width: 22em;
+  width: 30em;
   height: 100%;
   padding:3em 3em 0 3em;
-  border-left: 2px solid options.$color-accent;
+  border-left: 2px solid options.$color-primary;
   box-sizing: border-box;
 
 }
@@ -56,7 +56,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0.5em;
-  border: 1px solid #000;
+  border-bottom: 2px solid options.$color-primary;
   box-sizing: border-box;
 
   p {
@@ -95,6 +95,8 @@ body {
 .config-menu {
   overflow: hidden;
   opacity: 1;
+  margin:auto;
+  width: 90%;
   transition: opacity 0.4s ease;
   &.hidden {
     opacity: 0;
@@ -104,17 +106,36 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  button {
+    border:0;
+    background-color: none;
+  }
 }
 
 .special-deal {
   font-weight: bold;
   font-size: 0.75em;
-  background-color: #e74949;
+  background-color:options.$color-secondary;
   padding: 0.3em;
   border-radius: 7px;
   color: #fff;
   box-sizing: border-box;
 
+}
+
+
+.pizza-option-btn {
+  cursor: pointer;
+  padding:0.4em 0;
+  font-weight: bold;
+  font-size: 1.5em;
+  color:#fff;
+  margin-left: 0;
+  transition: margin-left 0.4s ease;
+  &:hover {
+    color: options.$color-primary;
+    margin-left:7px;
+  }
 }
 
 @media only screen and (max-width: 500px) {

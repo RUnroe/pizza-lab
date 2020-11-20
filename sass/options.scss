@@ -1,20 +1,12 @@
 $color-background: #3f3f3f;
 // fff7eb
 
-$color-accent: #2a7e3c;
+$color-primary: #18b539;
+$color-secondary:  #e74949;
 $color-text-primary: #fff;
 $color-text-secondary:#ccc;
 
-.btn-block {
-  width: 90%;
-  padding:0.6em 0;
-  text-align: center;
-  background-color: #e74949;
-  border-radius: 20px;
-  font-size: 2em;
-  font-weight: bolder;
-  color: #ffffff;
-}
+
 
 
 @media only screen and (max-width: 500px) {

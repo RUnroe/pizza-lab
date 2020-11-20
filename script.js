@@ -105,10 +105,8 @@ const createLayout = () => {
 
 //Helper method to make pizza btn options displayed on the left side of the screen
 const createOptionBtn = (name, prebuiltPizza) => {
-	let container = document.createElement("button");
-	container.classList.add("btn");
-	container.classList.add("btn-lg");
-	container.classList.add("btn-block");
+	let container = document.createElement("div");
+	container.classList.add("pizza-option-btn");
 	container.innerHTML = name;
 	//Add click event listener
 	container.addEventListener("click", () => {
