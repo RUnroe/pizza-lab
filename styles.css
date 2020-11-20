@@ -40,6 +40,50 @@
   margin-top: 5px;
 }
 
+#pizza .pizza {
+  position: relative;
+  /*width: 40em;*/
+  height: unset;
+  /*height: 40em;*/
+  background: inherit;
+}
+
+#pizza .pizza::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+#pizza .pizza > img {
+  position: absolute;
+}
+
+#pizza .pizza > img.full-size {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/*
+#pizza .pizza > img,
+#pizza .pizza .toppings {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#pizza .pizza .topping-mask {
+	border-radius: 100%;
+	overflow: hidden;
+}
+*/
 button {
   cursor: pointer;
 }
