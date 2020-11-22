@@ -1,0 +1,23 @@
+#pizza .preview {
+		position: relative;
+		height: unset;
+		background: inherit;
+
+	&::after {
+		content: '';
+		display: block;
+		padding-bottom: 100%;
+	}
+
+	> img {
+		position: absolute;
+		&.full-size {
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+}

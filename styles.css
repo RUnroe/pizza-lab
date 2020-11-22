@@ -1,10 +1,8 @@
-.preview {
-  background-color: #ffffff;
+#pizza .preview {
   margin: auto;
   box-sizing: border-box;
 }
-
-.order {
+#pizza .order {
   background-color: #fff;
   margin: auto;
   margin-top: 1em;
@@ -12,21 +10,19 @@
   padding: 0.4em;
   min-height: 10em;
 }
-.order h3 {
+#pizza .order h3 {
   margin: 0;
 }
-.order ul {
+#pizza .order ul {
   margin: 0.5em 0 0 0;
 }
-
-.total {
+#pizza .total {
   background-color: #fff;
   margin: auto;
   padding: 0.7em;
   box-sizing: border-box;
 }
-
-.orderButton {
+#pizza .orderButton {
   display: block;
   margin: auto;
   margin-top: 5px;
@@ -40,36 +36,31 @@
   background-color: #199433;
   outline: none;
 }
-.orderButton:disabled {
+#pizza .orderButton:disabled {
   background-color: #126824;
   color: #b3b3b3;
 }
-.orderButton:hover:enabled {
+#pizza .orderButton:hover:enabled {
   background-color: #157e2b;
   cursor: pointer;
 }
-.orderButton:active:enabled {
+#pizza .orderButton:active:enabled {
   background-color: #126824;
 }
 
 #pizza .preview {
   position: relative;
-  /*width: 40em;*/
   height: unset;
-  /*height: 40em;*/
   background: inherit;
 }
-
 #pizza .preview::after {
   content: "";
   display: block;
   padding-bottom: 100%;
 }
-
 #pizza .preview > img {
   position: absolute;
 }
-
 #pizza .preview > img.full-size {
   width: 100%;
   height: 100%;
@@ -79,28 +70,10 @@
   bottom: 0;
 }
 
-/*
-#pizza .preview > img,
-#pizza .preview .toppings {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-}
-
-#pizza .preview .topping-mask {
-	border-radius: 100%;
-	overflow: hidden;
-}
-*/
-input[type=radio], label {
+#pizza input[type=radio], #pizza label {
   cursor: pointer;
 }
-
-input[type=radio] {
+#pizza input[type=radio] {
   -webkit-appearance: none;
   -moz-appearance: none;
   height: 21px;
@@ -114,7 +87,7 @@ input[type=radio] {
   background: #fff;
   transition: background-color 0.3s, border-color 0.3s, box-shadow 0.2s;
 }
-input[type=radio]:after {
+#pizza input[type=radio]:after {
   content: "";
   display: block;
   left: 0;
@@ -122,39 +95,38 @@ input[type=radio]:after {
   position: absolute;
   transition: transform 0.6s ease, opacity 0.3s;
 }
-input[type=radio]:checked {
+#pizza input[type=radio]:checked {
   background: #199433;
   border-color: #199433;
 }
-input[type=radio]:disabled {
+#pizza input[type=radio]:disabled {
   background: #eee;
   cursor: not-allowed;
   opacity: 0.9;
 }
-input[type=radio]:disabled:checked {
+#pizza input[type=radio]:disabled:checked {
   background: #ccc;
   border-color: #ccc;
 }
-input[type=radio]:disabled + label {
+#pizza input[type=radio]:disabled + label {
   cursor: not-allowed;
 }
-input[type=radio]:hover:not(:checked):not(:disabled) {
+#pizza input[type=radio]:hover:not(:checked):not(:disabled) {
   border-color: #199433;
 }
-input[type=radio]:not(.switch) {
+#pizza input[type=radio]:not(.switch) {
   width: 21px;
 }
-input[type=radio]:not(.switch):after {
+#pizza input[type=radio]:not(.switch):after {
   opacity: var(--o, 0);
 }
-input[type=radio]:not(.switch):checked {
+#pizza input[type=radio]:not(.switch):checked {
   --o: 1;
 }
-
-input[type=radio] {
+#pizza input[type=radio] {
   border-radius: 50%;
 }
-input[type=radio]:after {
+#pizza input[type=radio]:after {
   width: 19px;
   height: 19px;
   border-radius: 50%;
@@ -162,33 +134,31 @@ input[type=radio]:after {
   opacity: 0;
   transform: scale(var(--s, 0.7));
 }
-input[type=radio]:checked {
+#pizza input[type=radio]:checked {
   --s: .5;
 }
-
 @media all and (max-width: 500px) {
-  input[type=radio] {
+  #pizza input[type=radio] {
     height: 15px;
   }
-  input[type=radio]:not(.switch) {
+  #pizza input[type=radio]:not(.switch) {
     width: 15px;
   }
-  input[type=radio]:after {
+  #pizza input[type=radio]:after {
     width: 13px;
     height: 13px;
   }
-
   #pizza .config-radio-div {
     min-width: 1em;
   }
   #pizza .config-radio-div label {
     font-size: 0.75em;
   }
-
   #pizza .config-radio-group {
     padding: 0 0.1em;
   }
 }
+
 body::-webkit-scrollbar {
   display: none;
 }
@@ -201,33 +171,34 @@ body {
   margin: 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  font-family: "Montserrat", sans-serif;
 }
 
 #pizza {
+  background-color: #3f3f3f;
   display: grid;
+  padding: 0;
+  margin: 0;
   grid-template-columns: 1fr 30em;
   min-height: 100vh;
   width: 100%;
   position: relative;
+  font-family: "Montserrat", sans-serif;
 }
-
-.leftSide {
+#pizza .leftSide {
   width: 90%;
   position: relative;
   margin: 0 auto;
   color: #fff;
 }
-.leftSide h1 {
+#pizza .leftSide h1 {
   margin: 0 0 0.3em 0.15em;
 }
-.leftSide .pizzaPlaceTitle {
+#pizza .leftSide .pizzaPlaceTitle {
   margin: 1em 0 0 0;
   font-size: 2.1em;
   text-align: center;
 }
-
-.rightSide {
+#pizza .rightSide {
   position: fixed;
   top: 0;
   right: 0;
@@ -237,8 +208,7 @@ body {
   border-left: 2px solid #199433;
   box-sizing: border-box;
 }
-
-.config-row {
+#pizza .config-row {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -246,20 +216,20 @@ body {
   border-bottom: 1.7px solid #199433;
   box-sizing: border-box;
 }
-.config-row:last-child {
+#pizza .config-row:last-child {
   border-bottom: 0;
 }
-.config-row p {
+#pizza .config-row p {
   text-transform: capitalize;
 }
-.config-row .config-radio-container {
+#pizza .config-row .config-radio-container {
   display: flex;
 }
-.config-row .config-radio-container .config-radio-group {
+#pizza .config-row .config-radio-container .config-radio-group {
   display: flex;
   padding: 0 0.4em;
 }
-.config-row .config-radio-container .config-radio-group .config-radio-div {
+#pizza .config-row .config-radio-container .config-radio-group .config-radio-div {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -267,58 +237,54 @@ body {
   min-width: 1.7em;
   color: #ccc;
 }
-.config-row .config-radio-container .config-radio-group .config-radio-div input {
+#pizza .config-row .config-radio-container .config-radio-group .config-radio-div input {
   margin: 0 auto;
 }
-.config-row .config-radio-container .config-radio-group .config-radio-div label {
+#pizza .config-row .config-radio-container .config-radio-group .config-radio-div label {
   padding-bottom: 0.4em;
   font-size: 0.85em;
   text-align: center;
 }
-
-.selection-container {
+#pizza .selection-container {
   overflow: hidden;
   max-height: 100vh;
   margin: auto;
   transition: max-height 0.45s ease;
 }
-.selection-container.hidden {
+#pizza .selection-container.hidden {
   max-height: 0;
 }
-.selection-container img {
+#pizza .selection-container img {
   width: 90%;
   margin: auto;
   display: block;
 }
-
-.screen-divider {
+#pizza .screen-divider {
   border-color: #199433;
   background-color: #199433;
   border-width: 1.2px;
   border-style: solid;
   margin: 1.5em 0;
 }
-
-.config-menu {
+#pizza .config-menu {
   overflow: hidden;
   opacity: 1;
   margin: auto;
   width: 90%;
   transition: opacity 0.4s ease;
 }
-.config-menu.hidden {
+#pizza .config-menu.hidden {
   opacity: 0;
 }
-.config-menu h2 {
+#pizza .config-menu h2 {
   margin-left: 0.25em;
 }
-
-.config-header {
+#pizza .config-header {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.config-header button {
+#pizza .config-header button {
   border: 0;
   background: none;
   font-size: 1.7em;
@@ -328,14 +294,13 @@ body {
   transition: color 0.3s ease;
   cursor: pointer;
 }
-.config-header button:hover {
+#pizza .config-header button:hover {
   color: #e74949;
 }
-.config-header button:active {
+#pizza .config-header button:active {
   color: #b21818;
 }
-
-.special-deal {
+#pizza .special-deal {
   font-weight: bold;
   font-size: 0.75em;
   background-color: #e74949;
@@ -344,8 +309,7 @@ body {
   color: #fff;
   box-sizing: border-box;
 }
-
-.pizza-option-btn {
+#pizza .pizza-option-btn {
   cursor: pointer;
   padding: 0.4em 0;
   font-weight: bold;
@@ -354,15 +318,14 @@ body {
   margin-left: 12px;
   transition: margin-left 0.4s ease, color 0.2s ease;
 }
-.pizza-option-btn:hover {
+#pizza .pizza-option-btn:hover {
   color: #199433;
   margin-left: 20px;
 }
-.pizza-option-btn:active {
+#pizza .pizza-option-btn:active {
   color: #126824;
 }
-
-.end-container {
+#pizza .end-container {
   grid-column: 1/3;
   width: 100%;
   max-width: 35em;
@@ -370,16 +333,14 @@ body {
   padding: 0 1em;
   box-sizing: border-box;
 }
-.end-container h1 {
+#pizza .end-container h1 {
   color: #fff;
 }
-
 @media all and (max-width: 1200px) {
   #pizza {
     grid-template-columns: 1fr 22em;
   }
-
-  .rightSide {
+  #pizza .rightSide {
     width: 22em;
     padding-left: 1.5em;
     padding-right: 1.5em;
@@ -389,8 +350,7 @@ body {
   #pizza {
     display: block;
   }
-
-  .rightSide {
+  #pizza .rightSide {
     display: block;
     width: 100%;
     margin: 5em 0 12em 0;
@@ -398,14 +358,13 @@ body {
     position: relative;
     border-left: 0;
   }
-  .rightSide .order, .rightSide .total, .rightSide .orderBtn {
+  #pizza .rightSide .order, #pizza .rightSide .total, #pizza .rightSide .orderBtn {
     max-width: 30em;
     margin: 0 auto;
   }
-  .rightSide.disabled {
+  #pizza .rightSide.disabled {
     display: none;
   }
-
   #pizza .preview {
     position: fixed;
     bottom: 0;
@@ -417,23 +376,21 @@ body {
   }
 }
 @media all and (max-width: 500px) {
-  .selection-container img {
+  #pizza .selection-container img {
     width: 100%;
   }
-
-  .config-menu {
+  #pizza .config-menu {
     width: 100%;
   }
 }
 @media all and (max-width: 375px) {
-  .selection-container img {
+  #pizza .selection-container img {
     display: none;
   }
-  .selection-container hr:last-of-type {
+  #pizza .selection-container hr:last-of-type {
     display: none;
   }
-
-  .leftSide {
+  #pizza .leftSide {
     width: 100%;
   }
 }

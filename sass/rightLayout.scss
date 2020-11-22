@@ -1,62 +1,61 @@
 @use 'options.scss';
 
-.preview {
-  background-color: #ffffff;
-  margin: auto;
-  box-sizing: border-box;
+#pizza {
+	.preview {
+		margin: auto;
+		box-sizing: border-box;
 
+	}
+
+	.order {
+		background-color: options.$color-text-primary;
+		margin: auto;
+		margin-top: 1em;
+		box-sizing: border-box;
+		padding:0.4em;
+		min-height: 10em;
+
+		h3 {
+			margin:0;
+		}
+		ul {
+			margin:0.5em 0 0 0;
+		}
+
+	}
+
+	.total {
+
+		background-color: options.$color-text-primary;
+		margin: auto;
+		padding: 0.7em;
+		box-sizing: border-box;
+	}
+
+	.orderButton {
+		display: block;
+		margin: auto;
+		margin-top: 5px;
+		color: options.$color-text-primary;
+		font-weight: bold;
+		border:none;
+		font-size: 1em;
+		padding:0.5em 1.2em;
+		font-family: 'Montserrat', sans-serif;
+		transition: background-color 0.3s ease;
+		background-color: options.$color-primary;
+		outline:none;
+		&:disabled {
+			background-color:darken(options.$color-primary, 10%);
+			color:darken(options.$color-text-secondary, 10%);
+
+		}
+		&:hover:enabled {
+			background-color:darken(options.$color-primary, 5%);
+			cursor:pointer;
+		}
+		&:active:enabled {
+			background-color:darken(options.$color-primary, 10%);
+		}
+	}
 }
-
-.order {
-  background-color: options.$color-text-primary;
-  margin: auto;
-  margin-top: 1em;
-  box-sizing: border-box;
-  padding:0.4em;
-  min-height: 10em;
-
-  h3 {
-    margin:0;
-  }
-  ul {
-    margin:0.5em 0 0 0;
-  }
-
-}
-
-.total {
-  
-  background-color: options.$color-text-primary;
-  margin: auto;
-  padding: 0.7em;
-  box-sizing: border-box;
-}
-
-.orderButton {
-  display: block;
-  margin: auto;
-  margin-top: 5px;
-  color: options.$color-text-primary;
-  font-weight: bold;
-  border:none;
-  font-size: 1em;
-  padding:0.5em 1.2em;
-  font-family: 'Montserrat', sans-serif;
-  transition: background-color 0.3s ease;
-  background-color: options.$color-primary;
-  outline:none;
-  &:disabled {
-    background-color:darken(options.$color-primary, 10%);
-    color:darken(options.$color-text-secondary, 10%);
-
-  }
-  &:hover:enabled {
-    background-color:darken(options.$color-primary, 5%);
-    cursor:pointer;
-  }
-  &:active:enabled {
-    background-color:darken(options.$color-primary, 10%);
-  }
-}
-
-
