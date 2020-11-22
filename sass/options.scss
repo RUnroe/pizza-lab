@@ -1,94 +1,9 @@
 $color-background: #3f3f3f;
 // fff7eb
 
-$color-primary: #18b539;
+$color-primary: #199433;
 $color-secondary:  #e74949;
 $color-text-primary: #fff;
 $color-text-secondary:#ccc;
 
-input[type="radio"], label {
-  cursor: pointer;
-}
 
-
-//https://codepen.io/aaroniker/pen/ZEYoxEY
-//Custom check boxes
-input[type='radio'] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  height: 21px;
-  outline: none;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  margin: 0;
-  cursor: pointer;
-  border: 1px solid #aaa;
-  background: #fff;
-  transition: background-color .3s, border-color .3s, box-shadow .2s;
-  &:after {
-    content: '';
-    display: block;
-    left: 0;
-    top: 0;
-    position: absolute;
-    transition: transform 0.6s ease, opacity 0.3s;
-  }
-  &:checked {
-    background: $color-primary;
-    border-color: $color-primary;
-  }
-  &:disabled {
-    background: #eee;
-    cursor: not-allowed;
-    opacity: .9;
-    &:checked {
-      background: $color-text-secondary;
-      border-color: $color-text-secondary;
-    }
-    & + label {
-      cursor: not-allowed;
-    }
-  }
-  &:hover {
-    &:not(:checked) {
-      &:not(:disabled) {
-        border-color: $color-primary;
-      }
-    }
-  }
-  
-  &:not(.switch) {
-    width: 21px;
-    &:after {
-      opacity: var(--o, 0);
-    }
-    &:checked {
-      --o: 1;
-    }
-  }
-}
-
-input[type='radio'] {
-  border-radius: 50%;
-  &:after {
-    width: 19px;
-    height: 19px;
-    border-radius: 50%;
-    background: #fff;
-    opacity: 0;
-    transform: scale(var(--s, .7));
-  }
-  &:checked {
-    --s: .5;
-  }
-}
-
-
-@media only screen and (max-width: 500px) {
-  .btn-block {
-    height: 40px;
-    margin: auto;
-    font-size: 25px;
-  }
-}

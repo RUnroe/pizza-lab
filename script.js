@@ -51,8 +51,35 @@ const createLayout = () => {
 	let leftSide = document.createElement("div");
 	leftSide.classList.add("leftSide");
 
+	//Pizza place name title
+	let pizzaPlaceTitle = document.createElement("h1");
+	pizzaPlaceTitle.innerHTML = "Miss Stake's Pizza";
+	pizzaPlaceTitle.classList.add("pizzaPlaceTitle");
+	leftSide.appendChild(pizzaPlaceTitle);
+
+
 	let selectionContainer = document.createElement("div");
 	selectionContainer.classList.add("selection-container");
+
+	//Line
+	let hr = document.createElement("hr");
+	hr.classList.add("screen-divider");
+	selectionContainer.appendChild(hr);
+	//Add pizza size image
+	let pizzaSizeImage = document.createElement("img");
+	pizzaSizeImage.setAttribute("src", "img/pizzaSizes.svg");
+	selectionContainer.appendChild(pizzaSizeImage);
+	
+	//Line
+	hr = document.createElement("hr");
+	hr.classList.add("screen-divider");
+	selectionContainer.appendChild(hr);
+
+	//Add title
+	let title = document.createElement("h1");
+	title.innerHTML = "Select a Pizza:";
+	selectionContainer.appendChild(title);
+
 	//Populate left side with prebuilt pizzas
 	for(prebuiltPizza of pizzaData.prebuilt) {
 		selectionContainer.appendChild(createOptionBtn(prebuiltPizza.name, prebuiltPizza));
@@ -70,10 +97,11 @@ const createLayout = () => {
 	//Make right side div
 	let rightSide = document.createElement("div");
 	rightSide.classList.add("rightSide");
+	rightSide.classList.add("disabled");
 
 	//Make pizza display, order, and total divs
 	let pizzaDisplay = document.createElement("div");
-	pizzaDisplay.classList.add("pizza");
+	pizzaDisplay.classList.add("preview");
 	let order = document.createElement("div");
 	order.classList.add("order");
 	let total = document.createElement("div");
@@ -292,6 +320,9 @@ const showConfigMenu = pizzaObject => {
 	document.getElementsByClassName("order")[0].innerHTML = "";
 	document.getElementsByClassName("total")[0].innerHTML = "Total: $0";
 	
+	//show right side content when config menu is expanded in mobile
+	document.getElementsByClassName("rightSide")[0].classList.remove("disabled");
+
 	updateScreen();
 
 }
@@ -300,6 +331,10 @@ const hideConfigMenu = () => {
 	//Change view with transitions
 	document.getElementsByClassName("config-menu")[0].classList.add("hidden");
 	// document.getElementsByClassName("orderButton")[0].disabled = true;
+
+	//hide right side content when config menu is hidden in mobile
+	document.getElementsByClassName("rightSide")[0].classList.add("disabled");
+
 	setTimeout(() => {
 		document.getElementsByClassName("config-menu")[0].style.display = "none";
 		document.getElementsByClassName("selection-container")[0].classList.remove("hidden");
@@ -449,21 +484,24 @@ const completeOrder = () => {
 	let parentContainer = document.getElementById("pizza");
 	parentContainer.innerHTML = "";
 
-	//pizza container changed from flex row to flex comlumn
-
-	parentContainer.style.flexDirection = "column";
+	//Create container
+	let childContainer = document.createElement("div");
+	childContainer.classList.add("end-container");
+	
 
 	//Create end text message and append it to the screen
 	let endText = document.createElement("h1");
 	endText.innerHTML = "Thank You for your Order!";
 	endText.classList.add("endText");
-	parentContainer.appendChild(endText);
+	childContainer.appendChild(endText);
 
-	//Create order box so user can see their final piza
+	//Create order box so user can see their final pizza
 	let order = document.createElement("div");
 	order.classList.add("order");
-	parentContainer.appendChild(order);
+	childContainer.appendChild(order);
 
+	//Add child container to parent
+	parentContainer.appendChild(childContainer);
 	//Populate order box
 	updateDescription();
 }
@@ -472,11 +510,11 @@ const completeOrder = () => {
 
 
 
-
+// the joe zone
 
 const updatePizzaImage = pizzaObject => {
 
-	let parentContainer = document.querySelector('#pizza .pizza');
+	let parentContainer = document.querySelector('#pizza .preview');
 	parentContainer.innerHTML = '';
 
 	// http://gjrand.sourceforge.net/
@@ -492,7 +530,6 @@ const updatePizzaImage = pizzaObject => {
 			return ((t ^ t >>> 14) >>> 0) / 4294967296;
 		};
 	};
-	//let prng = prngg(window.performance.getEntries()[0].loadEventStart);
 
 	const addImageWithClasses = (url, ...classes) => {
 		let image = document.createElement('img');

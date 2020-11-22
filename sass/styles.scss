@@ -1,12 +1,11 @@
 @use 'options.scss';
 @use 'rightLayout.scss';
 @use 'preview.css';
+@use 'radioBtns.scss';
 @use "sass:color";
 
 
-button {
-  cursor: pointer;
-}
+
 body::-webkit-scrollbar {
   display:none;
 }
@@ -32,11 +31,18 @@ body {
 }
 
 .leftSide {
-  width: 100%;
+  width: 90%;
   position: relative;
-  padding-top:3em;
+  margin: 0 auto;
   color:options.$color-text-primary;
-
+  h1 {
+    margin:0 0 0.3em 0.15em;
+  }
+  .pizzaPlaceTitle {
+    margin:1em 0 0 0;
+    font-size: 2.1em;
+    text-align: center;
+  }
 }
 
 
@@ -46,9 +52,11 @@ body {
   right:0;
   width: 30em;
   height: 100%;
-  padding:3em 3em 0 3em;
+  padding:1em 3em 0 3em;
   border-left: 2px solid options.$color-primary;
   box-sizing: border-box;
+
+  
 
 }
 
@@ -60,6 +68,9 @@ body {
   border-bottom: 1.7px solid options.$color-primary;
   box-sizing: border-box;
 
+  &:last-child {
+    border-bottom: 0;
+  }
   p {
     text-transform: capitalize;
   }
@@ -88,18 +99,30 @@ body {
   }
 }
 
-.order {
-  overflow-x: hidden;
-}
+
 .selection-container {
   overflow: hidden;
   max-height: 100vh;
-  transition: max-height 0.45s ease-out;
+  margin:auto;
+  transition: max-height 0.45s ease;
   &.hidden {
     max-height: 0;
   }
+  img {
+    width:90%;
+    margin:auto;
+    display:block;
+    
+  }
 }
 
+.screen-divider {
+  border-color: options.$color-primary;
+  background-color: options.$color-primary;
+  border-width: 1.2px;
+  border-style: solid;
+  margin: 1.5em 0;
+}
 .config-menu {
   overflow: hidden;
   opacity: 1;
@@ -108,6 +131,9 @@ body {
   transition: opacity 0.4s ease;
   &.hidden {
     opacity: 0;
+  }
+  h2 {
+    margin-left: 0.25em;
   }
 }
 .config-header {
@@ -122,6 +148,7 @@ body {
     color:#fff;
     outline:none;
     transition: color 0.3s ease;
+    cursor: pointer;
     &:hover {
       color:options.$color-secondary;
     }
@@ -149,43 +176,100 @@ body {
   font-weight: bold;
   font-size: 1.5em;
   color:#fff;
-  margin-left: 0;
+  margin-left: 12px;
   transition: margin-left 0.4s ease, color 0.2s ease;
   &:hover {
     color: options.$color-primary;
-    margin-left:7px;
+    margin-left:20px;
   }
   &:active {
     color:darken(options.$color-primary, 10%);
   }
 }
 
-@media only screen and (max-width: 500px) {
+.end-container{
+  grid-column: 1 / 3;
+  width:100%;
+  max-width: 35em;
+  margin:3em auto;
+  padding:0 1em;
+  box-sizing: border-box;
+  h1 {
+    color: options.$color-text-primary;
+  }
+}
+
+
+
+
+@media all and (max-width:1200px) {
   #pizza {
-    flex-direction: column-reverse;
+    grid-template-columns: 1fr 22em;
   }
-
-  .leftSide {
-    width: 100%;
-    border: none;
-  }
-
   .rightSide {
-    margin-bottom: 10px;
+    width:22em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+}
+
+@media all and (max-width: 800px) {
+  #pizza {
+    display: block;
+  }
+ .rightSide {
+   display: block;
+   width:100%;
+   margin: 5em 0 12em 0;
+   padding:0;
+   position: relative;
+   border-left: 0;
+   .order, .total, .orderBtn {
+    max-width: 30em;
+    margin:0 auto;
+   }
+   &.disabled {
+    display: none;
+  }
+ }
+
+ #pizza .preview {
+   position: fixed;
+   bottom:0;
+   transform: translate(-50%, 65%);
+   width: 100%;
+   left:50%;
+   max-width: 500px;
+   z-index:10;
+
+ }
+
+  
+}
+
+@media all and (max-width: 500px) {
+
+  .selection-container {
+    img {
+      width:100%;
+    }
+  }
+  .config-menu {
     width: 100%;
   }
+}
 
-  .order {
-    font-size: 10px;
-    margin-top: none;
+@media all and (max-width: 375px) {
+  .selection-container {
+    img {
+      display:none;
+    }
+    hr:last-of-type {
+      display:none;
+    }
   }
-
-  .total {
-    height: 10%;
+  .leftSide {
+    width:100%;
   }
-
-  .orderButton {
-    margin-bottom: 10px;
-    margin-left: 32px;
-  }
+  
 }

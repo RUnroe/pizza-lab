@@ -1,4 +1,4 @@
-#pizza .pizza {
+#pizza .preview {
 	position: relative;
 	/*width: 40em;*/
 	height: unset;
@@ -6,17 +6,17 @@
 	background: inherit;
 }
 
-#pizza .pizza::after {
+#pizza .preview::after {
 	content: '';
 	display: block;
 	padding-bottom: 100%;
 }
 
-#pizza .pizza > img {
+#pizza .preview > img {
 	position: absolute;
 }
 
-#pizza .pizza > img.full-size {
+#pizza .preview > img.full-size {
 	width: 100%;
 	height: 100%;
 	left: 0;
@@ -26,8 +26,8 @@
 }
 
 /*
-#pizza .pizza > img,
-#pizza .pizza .toppings {
+#pizza .preview > img,
+#pizza .preview .toppings {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -37,7 +37,7 @@
 	bottom: 0;
 }
 
-#pizza .pizza .topping-mask {
+#pizza .preview .topping-mask {
 	border-radius: 100%;
 	overflow: hidden;
 }
