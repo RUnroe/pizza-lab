@@ -237,6 +237,11 @@ body {
   min-width: 1.7em;
   color: #ccc;
 }
+@media all and (max-width: 500px) {
+  #pizza .config-row .config-radio-container .config-radio-group .config-radio-div {
+    padding: 0 0.1em;
+  }
+}
 #pizza .config-row .config-radio-container .config-radio-group .config-radio-div input {
   margin: 0 auto;
 }

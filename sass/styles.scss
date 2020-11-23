@@ -87,6 +87,9 @@ body {
 					flex-direction: column;
 					position: relative;
 					padding: 0 0.3em;
+					@media all and (max-width: 500px) {
+						padding: 0 0.1em;
+					}
 					min-width: 1.7em;
 					color: options.$color-text-secondary;
 					input {
