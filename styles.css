@@ -38,7 +38,7 @@
 }
 #pizza .orderButton:disabled {
   background-color: #126824;
-  color: #b3b3b3;
+  color: #e6e6e6;
 }
 #pizza .orderButton:hover:enabled {
   background-color: #157e2b;
@@ -105,8 +105,8 @@
   opacity: 0.9;
 }
 #pizza input[type=radio]:disabled:checked {
-  background: #ccc;
-  border-color: #ccc;
+  background: #444;
+  border-color: #444;
 }
 #pizza input[type=radio]:disabled + label {
   cursor: not-allowed;
@@ -164,7 +164,7 @@ body::-webkit-scrollbar {
 }
 
 body {
-  background-color: #3f3f3f;
+  background-color: #efefea;
   width: 100vw;
   height: 100vh;
   padding: 0;
@@ -174,7 +174,7 @@ body {
 }
 
 #pizza {
-  background-color: #3f3f3f;
+  background-color: #efefea;
   display: grid;
   padding: 0;
   margin: 0;
@@ -188,7 +188,7 @@ body {
   width: 90%;
   position: relative;
   margin: 0 auto;
-  color: #fff;
+  color: #222;
 }
 #pizza .leftSide h1 {
   margin: 0 0 0.3em 0.15em;
@@ -235,7 +235,7 @@ body {
   position: relative;
   padding: 0 0.3em;
   min-width: 1.7em;
-  color: #ccc;
+  color: #444;
 }
 @media all and (max-width: 500px) {
   #pizza .config-row .config-radio-container .config-radio-group .config-radio-div {
@@ -249,6 +249,12 @@ body {
   padding-bottom: 0.4em;
   font-size: 0.85em;
   text-align: center;
+}
+#pizza .detail-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 #pizza .selection-container {
   overflow: hidden;
@@ -294,7 +300,7 @@ body {
   background: none;
   font-size: 1.7em;
   font-weight: bold;
-  color: #fff;
+  color: #000;
   outline: none;
   transition: color 0.3s ease;
   cursor: pointer;
@@ -319,7 +325,7 @@ body {
   padding: 0.4em 0;
   font-weight: bold;
   font-size: 1.5em;
-  color: #fff;
+  color: #222;
   margin-left: 12px;
   transition: margin-left 0.4s ease, color 0.2s ease;
 }
@@ -339,7 +345,7 @@ body {
   box-sizing: border-box;
 }
 #pizza .end-container h1 {
-  color: #fff;
+  color: #222;
 }
 @media all and (max-width: 1200px) {
   #pizza {

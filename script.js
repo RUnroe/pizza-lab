@@ -67,7 +67,7 @@ const createLayout = () => {
 	selectionContainer.appendChild(hr);
 	//Add pizza size image
 	let pizzaSizeImage = document.createElement("img");
-	pizzaSizeImage.setAttribute("src", "img/pizzaSizes.svg");
+	pizzaSizeImage.setAttribute("src", "img/pizzaSizesWhiteTheme.svg");
 	selectionContainer.appendChild(pizzaSizeImage);
 	
 	//Line
@@ -102,6 +102,10 @@ const createLayout = () => {
 	//Make pizza display, order, and total divs
 	let pizzaDisplay = document.createElement("div");
 	pizzaDisplay.classList.add("preview");
+
+	//Make container
+	let rightsideContentContainer = document.createElement("div");
+	rightsideContentContainer.classList.add("detail-container");
 	let order = document.createElement("div");
 	order.classList.add("order");
 	let total = document.createElement("div");
@@ -117,9 +121,12 @@ const createLayout = () => {
 
 	//Nest all elements
 	rightSide.appendChild(pizzaDisplay);
-	rightSide.appendChild(order);
-	rightSide.appendChild(total);
-	rightSide.appendChild(orderBtn);
+
+	rightsideContentContainer.appendChild(order);
+	rightsideContentContainer.appendChild(total);
+	rightsideContentContainer.appendChild(orderBtn);
+
+	rightSide.appendChild(rightsideContentContainer);
 
 	parentContainer.appendChild(rightSide);
 	//End right side
