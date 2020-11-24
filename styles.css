@@ -253,7 +253,8 @@ body {
 #pizza .detail-container {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
 }
 #pizza .selection-container {
