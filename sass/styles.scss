@@ -108,7 +108,7 @@ body {
 
 	.detail-container {
 		position:absolute;
-		bottom:0;
+		bottom:0.4em;
 		left:0;
 		right:0;
 		box-sizing: border-box;
@@ -253,7 +253,9 @@ body {
 			z-index:10;
 
 		}
-
+		.detail-container {
+			position:relative;
+		}
 
 	}
 
