@@ -3,7 +3,7 @@
   box-sizing: border-box;
 }
 #pizza .order {
-  background-color: #fff;
+  background-color: #f7f7f4;
   margin: auto;
   margin-top: 1em;
   box-sizing: border-box;
@@ -105,8 +105,8 @@
   opacity: 0.9;
 }
 #pizza input[type=radio]:disabled:checked {
-  background: #444;
-  border-color: #444;
+  background: #444444;
+  border-color: #444444;
 }
 #pizza input[type=radio]:disabled + label {
   cursor: not-allowed;
@@ -235,7 +235,7 @@ body {
   position: relative;
   padding: 0 0.3em;
   min-width: 1.7em;
-  color: #444;
+  color: #444444;
 }
 @media all and (max-width: 500px) {
   #pizza .config-row .config-radio-container .config-radio-group .config-radio-div {
